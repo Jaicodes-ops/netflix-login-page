@@ -27,7 +27,7 @@ export default function App() {
     setLoading(true);
 
     try {
-      const res = await axios.post("https://netflix-login-page-ijh6.onrender.com/", {
+      const res = await axios.post(const res = await axios.post("https://netflix-login-page-ijh6.onrender.com/api/login",  {
         email,
         password
       });
