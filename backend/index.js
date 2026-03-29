@@ -1,5 +1,5 @@
-const express=require("express")
-import cors from "cors"
+const express = require("express");
+const cors = require("cors");
 
 const app = express();
 app.use(express.json());
@@ -12,7 +12,6 @@ const users = [
 
 app.post("/api/login", (req, res) => {
   const { email, password } = req.body;
-
 
   const user = users.find(
     (u) => u.email === email && u.password === password
