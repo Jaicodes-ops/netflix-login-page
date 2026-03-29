@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import "./App.css";
 
 export default function App() {
 
@@ -55,59 +56,53 @@ export default function App() {
 
   if (isLoggedIn) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-black to-gray-900 flex items-center justify-center">
-        <div className="text-center text-white">
-          <h1 className="text-5xl font-bold mb-4">NETFLIX</h1>
-          <h2 className="text-3xl mb-8">Welcome, {user.email}!</h2>
-          <div className="bg-gray-800 p-8 rounded-lg mb-8">
-            <p className="mb-4">You are logged in</p>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-red-600 p-4 rounded hover:bg-red-700">Show 1</div>
-              <div className="bg-red-600 p-4 rounded hover:bg-red-700">Show 2</div>
-              <div className="bg-red-600 p-4 rounded hover:bg-red-700">Show 3</div>
-              <div className="bg-red-600 p-4 rounded hover:bg-red-700">Show 4</div>
+      <div className="page">
+        <div className="welcome-box">
+          <h1 className="logo">NETFLIX</h1>
+          <h2 className="welcome-text">Welcome, {user.email}!</h2>
+          <div className="shows-box">
+            <p className="logged-in-text">You are logged in</p>
+            <div className="shows-grid">
+              <div className="show-card">Show 1</div>
+              <div className="show-card">Show 2</div>
+              <div className="show-card">Show 3</div>
+              <div className="show-card">Show 4</div>
             </div>
           </div>
-          <button onClick={handleLogout} className="bg-red-600 px-6 py-2 rounded hover:bg-red-700">
-            Logout
-          </button>
+          <button className="btn" onClick={handleLogout}>Logout</button>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black to-gray-900 flex items-center justify-center">
-      <div className="w-full max-w-md px-4">
-        <div className="text-center mb-10">
-          <h1 className="text-5xl text-red-600 mb-2">NETFLIX</h1>
-          <p className="text-gray-400">Login</p>
+    <div className="page">
+      <div className="login-box">
+        <div className="login-header">
+          <h1 className="logo red">NETFLIX</h1>
+          <p className="subtitle">Login</p>
         </div>
-        <form onSubmit={handleLogin} className="bg-gray-900 p-6 rounded">
+        <form className="form" onSubmit={handleLogin}>
           <input
             type="email"
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full mb-4 p-3 bg-gray-700 text-white rounded"
+            className="input"
           />
           <input
             type="password"
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full mb-4 p-3 bg-gray-700 text-white rounded"
+            className="input"
           />
-          {error && <p className="text-red-400 mb-4">{error}</p>}
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full bg-red-600 p-3 rounded hover:bg-red-700"
-          >
+          {error && <p className="error">{error}</p>}
+          <button type="submit" disabled={loading} className="btn">
             {loading ? "Checking..." : "Login"}
           </button>
         </form>
-        <div className="mt-6 text-gray-400 text-sm text-center">
+        <div className="demo">
           <p>Demo:</p>
           <p>user@netflix.com / password:123</p>
         </div>
